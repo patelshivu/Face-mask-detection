@@ -23,21 +23,7 @@ def load_image_into_numpy_array(image):
 def upload():  
 
     return render_template("demo_1.html")  
-'''
-@app.route('/upload',methods=['GET','POST'])
-def upload_image():
-    file = request.files['file']
-    if file and allowed_file(file.filename):
-        filename = secure_filename(file.filename)
-        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        #detect_and_predict_mask(frame, faceNet, maskNet)
-        print("Image uploaded")
-        #return detect_and_predict_mask(frame, faceNet, maskNet)
 
-        #return "Image uploaded"
-        #import pdb;pdb.set_trace()
-        #return detect_mask_video(frame, faceNet, maskNet)
-        return render_template("success.html", name = file.filename)  '''
 @app.route('/mask_detect', methods =['GET','POST'])
 def detect_mask():
     print("mask_detect")
