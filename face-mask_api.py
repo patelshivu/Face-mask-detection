@@ -1,8 +1,8 @@
 from flask import *  
 from flask import Flask, render_template, request, redirect, url_for, send_from_directory
-from werkzeug import secure_filename
+from werkzeug.utils import secure_filename
 import os
-
+import numpy as np
 from detect_mask_video import camera_open
 app = Flask(__name__)  
 
@@ -19,18 +19,19 @@ def load_image_into_numpy_array(image):
   return np.array(image.getdata()).reshape(
       (im_height, im_width, 3)).astype(np.uint8)
 
+# Render Mask detection HTML Templates
 @app.route('/')  
 def upload():  
+    return render_template("demo_1.html") 
 
-    return render_template("demo_1.html")  
-
+# Real time Face mask detection 
 @app.route('/mask_detect', methods =['GET','POST'])
 def detect_mask():
     print("mask_detect")
 
-    #return "mask detect"
+    #Function calling real time "mask detect"
     camera_open()
     return redirect('/')
 
 if __name__ == '__main__':  
-    app.run(debug = True)  
+    app.run(debug = False)  
