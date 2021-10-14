@@ -22,7 +22,7 @@ def load_image_into_numpy_array(image):
 # Render Mask detection HTML Templates
 @app.route('/')  
 def upload():  
-    return render_template("demo_1.html") 
+    return render_template("detect_mask.html") 
 
 # Real time Face mask detection 
 @app.route('/mask_detect', methods =['GET','POST'])
